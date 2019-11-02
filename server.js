@@ -1,14 +1,10 @@
-require("dotenv").config();
+const jsonServer = require('json-server');
+const server = jsonServer.create();
+const router = jsonServer.router('db.json');
+const middlewares = jsonServer.defaults();
+const port = process.env.PORT || 3000;
 
-const express = require("express");
-const cors = require("cors");
+server.use(middlewares);
+server.use(router);
 
-const app = express();
-
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(morgan("dev"));
-
-
-app.listen(process.env.PORT || 3001);
+server.listen(port);
