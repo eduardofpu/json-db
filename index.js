@@ -21,9 +21,6 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
-app.use(
-  "/users",
-  express.static(path.resolve(__dirname, "..", "tmp", "uploads"))
-);
+app.use("/users");
 
 app.listen(process.env.PORT || 3001);
